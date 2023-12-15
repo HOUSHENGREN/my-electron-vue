@@ -11,7 +11,9 @@ const createWindow = () => {
     }
   })
 
-  win.loadFile('index.html')
+  win.loadURL('http://localhost:8080/')
+
+  // win.loadFile('dist/index.html') // 测试
 }
 
 // 在 Electron 中，只有在 app 模块的 ready 事件被激发后才能创建浏览器窗口。
