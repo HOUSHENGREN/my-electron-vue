@@ -3,12 +3,38 @@
   "version": "0.1.0",
   "private": true,
   "main": "electron/main.js",
+  "description": "test electron builder",
+  "author": {
+    "name": "zhangdezheng",
+    "email": "2549626703@qq.com"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "electron": "wait-on http://localhost:8080/ && cross-env NODE_ENV=development electron .",
-    "electron:serve": "concurrently -k \"npm run serve\" \"npm run electron\""
+    "electron:serve": "concurrently -k \"npm run serve\" \"npm run electron\"",
+    "electron:build": "npm run build && electron-builder"
+  },
+  "build": {
+    "appId": "com.dweb.demo",
+    "productName": "MyElectronVue",
+    "copyright": "Copyright © 2021 <张德政>",
+    "mac": {
+      "category": "public.app-category.utilities"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets",
+      "output": "dist_electron"
+    }
   },
   "dependencies": {
     "core-js": "^3.8.3",
