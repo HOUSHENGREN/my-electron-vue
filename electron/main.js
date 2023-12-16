@@ -2,6 +2,9 @@ const { app, BrowserWindow } = require('electron')
 // include the Node.js 'path' module at the top of your file
 const path = require('node:path')
 
+const NODE_ENV = process.env.NODE_ENV  //新增
+// const NODE_ENV = 'development'  // 判断开发或生产模式(建议写成这种,开发模式就可以用,等即将打包了再把这个变量换成打包模式)
+
 const createWindow = () => {
   const win = new BrowserWindow({
     width: 800,
@@ -11,9 +14,18 @@ const createWindow = () => {
     }
   })
 
-  win.loadURL('http://localhost:8080/')
-
+  // win.loadURL('http://localhost:8080/') // 测试
   // win.loadFile('dist/index.html') // 测试
+
+  win.loadURL(
+    NODE_ENV === 'development'
+    ? 'http://localhost:8080'
+    :`file://${path.join(__dirname, '../dist/index.html')}`
+  ); // 新增
+  // 打开开发工具
+  if (NODE_ENV === "development") {
+    win.webContents.openDevTools()
+  } // 新增
 }
 
 // 在 Electron 中，只有在 app 模块的 ready 事件被激发后才能创建浏览器窗口。

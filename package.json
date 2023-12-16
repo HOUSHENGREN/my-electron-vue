@@ -2,12 +2,12 @@
   "name": "my-electron-vue",
   "version": "0.1.0",
   "private": true,
-  "main": "main.js",
+  "main": "electron/main.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "electron": "wait-on http://localhost:8080/ && electron .",
+    "electron": "wait-on http://localhost:8080/ && cross-env NODE_ENV=development electron .",
     "electron:serve": "concurrently -k \"npm run serve\" \"npm run electron\""
   },
   "dependencies": {
@@ -21,6 +21,7 @@
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
     "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
     "electron": "^28.0.0",
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^8.0.3",
