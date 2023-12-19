@@ -1,0 +1,17 @@
+{
+  "rules": {
+    "quotes": "warn",
+    "semi": [
+      2,
+      "always"
+    ],
+    "no-console": "off",
+    "no-unused-vars": [
+      2,
+      {
+        "vars": "all",
+        "args": "none"
+      }
+    ]
+  }
+}
